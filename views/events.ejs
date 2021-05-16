@@ -10,12 +10,22 @@
 <body>
     <div class="container">
         <h1>Upcoming events</h1>
+        
         <% if(events) { %>
-        <ul>
-            <% events.forEach(event => { %>
-                <li><%=event.summary%> on <%=event.start.dateTime.split('T')[0]%> at <%=event.start.dateTime.split('T')[1].split('+')[0]%></li>
+        <div class="events">
+            <% datesWithDays.forEach(date => { %>
+                <div class="date__container">
+                   <div class="date"><%= date.day %> <%= date.date %></div>
+                   <ul>
+                        <% events.forEach(event => { %>
+                            <% if(event.start.dateTime.split('T')[0] === date.date) { %>
+                                <li><span class="event__times"><%=event.start.dateTime.split('T')[1].split('+')[0]%> - <%=event.end.dateTime.split('T')[1].split('+')[0]%></span> <span class="event__summary"><%=event.summary%></span></li>
+                            <% } %>
+                        <% }) %>
+                    </ul>
+                </div>
             <% }) %>
-        </ul>
+        </div>
         <% } else { %>
         <h3>No events to show...</h3>
         <% } %>    

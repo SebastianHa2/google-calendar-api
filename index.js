@@ -95,9 +95,75 @@ app.post('/show-events', (req, res, next) => {
         }, (err, response) => {
             if (err) return console.log('The API returned an error: ' + err);
             events = response.data.items;
+
+            // Remove duplicate dates from the dates for UI purposes
+            const dates = events.map(event => {
+                return event.start.dateTime.split('T')[0]
+            })
+            
+            const uniqueDates = [...new Set(dates)]
+
+            // Add days to the dates
+            let datesWithDays = uniqueDates.map(date => {
+                const dt = new Date(date)
+                const day = dt.getDay()
+                return {
+                    date: date,
+                    day: day
+                }
+            })
+
+            // Convert day numbers to names
+            datesWithDays = datesWithDays.map(date => {
+                if(date.day === 1){
+                    return {
+                        date: date.date,
+                        day: 'Monday'
+                    }
+                }
+                if(date.day === 2){
+                    return {
+                        date: date.date,
+                        day: 'Tuesday'
+                    }
+                }
+                if(date.day === 3){
+                    return {
+                        date: date.date,
+                        day: 'Wednesday'
+                    }
+                }
+                if(date.day === 4){
+                    return {
+                        date: date.date,
+                        day: 'Thursday'
+                    }
+                }
+                if(date.day === 5){
+                    return {
+                        date: date.date,
+                        day: 'Friday'
+                    }
+                }
+                if(date.day === 6){
+                    return {
+                        date: date.date,
+                        day: 'Saturday'
+                    }
+                }
+                if(date.day === 0){
+                    return {
+                        date: date.date,
+                        day: 'Sunday'
+                    }
+                }
+            })
+
+
             if (events.length) {
                 res.render('events', {
-                    events: events
+                    events: events,
+                    datesWithDays: datesWithDays
                 })
             } else {
                 res.render('events')
