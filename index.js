@@ -66,9 +66,8 @@ app.post('/show-events', (req, res, next) => {
 
 
 
-
         oAuth2Client.getToken(key, (err, token) => {
-            if (err) return console.error('Error retrieving access token', err);
+            if (err) return res.redirect('/');
             oAuth2Client.setCredentials(token);
             // Store the token to disk for later program executions
             fs.writeFile(TOKEN_PATH, JSON.stringify(token), (err) => {
