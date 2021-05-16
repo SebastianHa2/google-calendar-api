@@ -1,13 +1,13 @@
 const fs = require('fs');
 const { google } = require('googleapis');
 const express = require('express')
-
-// Get events function 
+const path = require('path')
 
 const app = express()
 
 app.use(express.json())
 app.use(express.urlencoded({extended: false}));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.set('view engine', 'ejs')
 
@@ -106,6 +106,7 @@ app.post('/show-events', (req, res, next) => {
         });
     }
 })
+
 
 const PORT = process.env.PORT || 3000
 

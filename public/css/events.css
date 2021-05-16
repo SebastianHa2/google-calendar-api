@@ -1,0 +1,29 @@
+.container{
+    width: 100%;
+    min-height: 100vh;
+}
+
+h1 {
+    font-size: 3rem;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 300;
+    letter-spacing: 0.1rem;
+}
+
+ul{
+    width: 50%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+li{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2rem;
+    background-color: rosybrown;
+    margin: 0.5rem 0;
+    list-style-type: none;
+}

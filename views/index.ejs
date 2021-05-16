@@ -5,15 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Google Calendar API</title>
+    <link rel="stylesheet" href="/css/form.css">
 </head>
 <body>
-    <div class="sign-in">
-        <a href="https://accounts.google.com/o/oauth2/v2/auth/oauthchooseaccount?access_type=offline&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcalendar.readonly&response_type=code&client_id=342831238873-dcod4849djq2v83aejt5lv7js2i15nht.apps.googleusercontent.com&redirect_uri=https%3A%2F%2Fdevelopers.google.com%2Foauthplayground&flowName=GeneralOAuthFlow">Sign In</a>
+    <div class="container">
+        <div class="sign-in">
+            <a target="_blank" href="https://accounts.google.com/o/oauth2/v2/auth/oauthchooseaccount?access_type=offline&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcalendar.readonly&response_type=code&client_id=670414781153-5er8c9vdscu9eeop237qm12qllo1tuj4.apps.googleusercontent.com&redirect_uri=urn%3Aietf%3Awg%3Aoauth%3A2.0%3Aoob&flowName=GeneralOAuthFlow">Sign In</a>
+        </div>
+        <form action="/show-events" method="POST">
+            <label for="key">Input the key you get from signing in:</label>
+            <input type="text" name="key">
+            <button type="submit">Show Events</button>
+        </form>
     </div>
-    <form action="/show-events" method="POST">
-        <label for="key">Input the key you get from signing in:</label>
-        <input type="text" name="key">
-        <button type="submit">Show Events</button>
-    </form>
 </body>
 </html>

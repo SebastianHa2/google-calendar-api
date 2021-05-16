@@ -5,19 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Google Calendar API</title>
+    <link rel="stylesheet" href="/css/events.css">
 </head>
 <body>
-    <h1>Upcoming events</h1>
-    <% if(events) { %>
-    <ul>
-        <% events.forEach(event => { %>
-            <li><%=event.summary%> on <%=event.start.dateTime%></li>
-        <% }) %>
-    </ul>
-    <% } else { %>
-    <h3>No events to show...</h3>
-    <% } %>
-
-
+    <div class="container">
+        <h1>Upcoming events</h1>
+        <% if(events) { %>
+        <ul>
+            <% events.forEach(event => { %>
+                <li><%=event.summary%> on <%=event.start.dateTime.split('T')[0]%> at <%=event.start.dateTime.split('T')[1].split('+')[0]%></li>
+            <% }) %>
+        </ul>
+        <% } else { %>
+        <h3>No events to show...</h3>
+        <% } %>    
+    </div>
 </body>
 </html>
