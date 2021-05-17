@@ -58,6 +58,7 @@ li{
     list-style-type: none;
     border-radius: 0.2rem;
     padding: 0.2rem 2rem;
+    box-shadow: 0.1rem 0.1rem 0.3rem #000;
 }
 
 .event__times{
@@ -66,6 +67,10 @@ li{
     justify-content: left;
     align-items: center;
     font-weight: 300;
+}
+
+h3{
+    text-align: center;
 }
 
 .event__summary{

@@ -15,8 +15,8 @@ app.get('/', (req, res, next) => {
     res.render('index')
 })
 
-app.post('/show-events', (req, res, next) => {
-    const key = req.body.key
+app.get('/show-events', (req, res, next) => {
+    const key = req.query.code
 
         // If modifying these scopes, delete token.json.
     const SCOPES = ['https://www.googleapis.com/auth/calendar.readonly'];
@@ -58,22 +58,11 @@ app.post('/show-events', (req, res, next) => {
      * @param {getEventsCallback} callback The callback for the authorized client.
      */
     function getAccessToken(oAuth2Client, callback) {
-        const authUrl = oAuth2Client.generateAuthUrl({
-            access_type: 'offline',
-            scope: SCOPES,
-        });
-        console.log('Authorize this app by visiting this url:', authUrl);
-
 
 
         oAuth2Client.getToken(key, (err, token) => {
             if (err) return res.redirect('/');
             oAuth2Client.setCredentials(token);
-            // Store the token to disk for later program executions
-            fs.writeFile(TOKEN_PATH, JSON.stringify(token), (err) => {
-                if (err) return console.error(err);
-                console.log('Token stored to', TOKEN_PATH);
-            });
             callback(oAuth2Client);
         });
         }
@@ -159,15 +148,10 @@ app.post('/show-events', (req, res, next) => {
                 }
             })
 
-
-            if (events.length) {
-                res.render('events', {
-                    events: events,
-                    datesWithDays: datesWithDays
-                })
-            } else {
-                res.render('events')
-            }
+            res.render('events', {
+                events: events,
+                datesWithDays: datesWithDays
+            })
         });
     }
 })

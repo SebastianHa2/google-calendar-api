@@ -11,7 +11,7 @@
     <div class="container">
         <h1>Upcoming events</h1>
         
-        <% if(events) { %>
+        <% if(events.length > 0) { %>
         <div class="events">
             <% datesWithDays.forEach(date => { %>
                 <div class="date__container">
