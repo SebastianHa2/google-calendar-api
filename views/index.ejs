@@ -6,15 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Google Calendar API</title>
     <link rel="stylesheet" href="/css/form.css">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 </head>
 <body>
-    <div class="container">
-        <div class="sign-in">
-            <div class="sign-in__heading">
-                GOOGLE CALENDAR API
+    <div class="container-fluid">
+        <div id="container" class="row justify-content-center align-content-center">
+            <div id="card" class="col-md-6 card">
+                <div id="wrapper" class="row shadow justify-content-center align-content-center">
+                    <h2 id="heading">GOOGLE CALENDAR API</h2>
+
+                    <a id="link" href="https://accounts.google.com/o/oauth2/v2/auth?access_type=offline&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcalendar.readonly&response_type=code&client_id=82969930891-ang0r2k2sh1gt8f1cqon0s3bb12ggkrq.apps.googleusercontent.com&redirect_uri=https%3A%2F%2Fgoogle-calendar-api-test.herokuapp.com%2Fshow-events">
+                        <button id="button" class="btn btn-dark">
+                            Sign In
+                        </button>
+                    </a>
+                </div>
             </div>
-            <a href="https://accounts.google.com/o/oauth2/v2/auth?access_type=offline&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcalendar.readonly&response_type=code&client_id=82969930891-ang0r2k2sh1gt8f1cqon0s3bb12ggkrq.apps.googleusercontent.com&redirect_uri=https%3A%2F%2Fgoogle-calendar-api-test.herokuapp.com%2Fshow-events">Sign In</a>
         </div>
     </div>
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 </body>
 </html>

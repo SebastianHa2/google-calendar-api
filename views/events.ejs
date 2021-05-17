@@ -6,29 +6,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Google Calendar API</title>
     <link rel="stylesheet" href="/css/events.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 </head>
 <body>
-    <div class="container">
-        <h1>Upcoming events</h1>
-        
-        <% if(events.length > 0) { %>
-        <div class="events">
-            <% datesWithDays.forEach(date => { %>
-                <div class="date__container">
-                   <div class="date"><%= date.day %> <%= date.date %></div>
-                   <ul>
-                        <% events.forEach(event => { %>
-                            <% if(event.start.dateTime.split('T')[0] === date.date) { %>
-                                <li><span class="event__times"><%=event.start.dateTime.split('T')[1].split('+')[0]%> - <%=event.end.dateTime.split('T')[1].split('+')[0]%></span> <span class="event__summary"><%=event.summary%></span></li>
-                            <% } %>
-                        <% }) %>
-                    </ul>
+    <div class="container-fluid">
+        <div id="wrapper-row" class="row justify-content-center align-content-center">
+            <div id="wrapper-column" class="col-md-10 shadow rounded">
+                <div id="heading"class="rounded row align-content-center p-3">
+                    <h2 style="font-size: 1.5rem;">Upcoming Events</h2>
                 </div>
-            <% }) %>
+                <% if(events.length > 0) { %>
+                    <% datesWithDays.forEach(date => { %>
+                        <div id="date" class="row align-content-center">
+                            <p class="date-heading"><%= date.day %>, <%= date.date %></p>
+                        </div>
+                        <div id="events" class="row">
+                                <% events.forEach(event => { %>
+                                    <% if(event.start.dateTime.split('T')[0] === date.date) { %>
+                                        <div class="row">
+                                            <div id="event" class="row align-content-center">
+                                                <div class="col-3 text-center"><%=event.start.dateTime.split('T')[1].split('+')[0]%> - <%=event.end.dateTime.split('T')[1].split('+')[0]%></div> 
+                                                <div class="col text-center"><%=event.summary%></div>
+                                            </div>
+                                        </div>
+                                    <% } %>
+                                <% }) %>
+                        </div>
+                    <% }) %>
+                <% } else { %>
+                <h3>No events to show...</h3>
+                <% } %> 
+            </div>
         </div>
-        <% } else { %>
-        <h3>No events to show...</h3>
-        <% } %>    
+   
     </div>
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 </body>
 </html>
